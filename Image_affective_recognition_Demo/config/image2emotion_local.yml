@@ -1,0 +1,14 @@
+
+artemis_preprocessed_dir : 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step1/artemis_preprocessed.csv'
+image_hists_file :  'F:/work/Image_emotion_analysis/artemis-master/artemis/data/image-emotion-histogram.csv'
+img_dir :  'F:/dataset/Image/ArtEmis/wikiart'
+
+lanczos :  True
+img_dim :  256
+n_emotions: 9
+num_workers :  8
+batch_size :  128
+gpu_id :  0
+use_abstract: True
+checkpoint_file: 'F:/work/Image_emotion_analysis/artemis-master/Image_affective_recognition_Demo/resource/output/image_emotion/best_model.pt'
+save_dir :  'F:/work/Image_emotion_analysis/artemis-master/Image_affective_recognition_Demo/resource/output/image_emotion' 
