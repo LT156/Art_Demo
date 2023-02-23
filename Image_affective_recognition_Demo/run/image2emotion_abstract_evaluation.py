@@ -37,8 +37,6 @@ def evaluate_argmax_prediction(dataset, guesses):
     max_pred = np.argmax(guesses[umax_ids], 1)
     return (gt_max == max_pred).mean()
 
-
-
 def get_preparedData(image_hists,artemis_data):
     # this literal_eval brings the saved string to its corresponding native (list) type
     image_hists.emotion_histogram = image_hists.emotion_histogram.apply(literal_eval)
@@ -84,43 +82,6 @@ def init_model(args):
     model = ImageEmotionClassifier(img_encoder, clf_head,abstract_projection_net);
     return  model
 
-def train(model, data_loaders, criterion, optimizer, device,args):
-    # set to True, if you are not using a pretrained model
-    max_train_epochs = 25
-    no_improvement = 0
-    min_eval_loss = np.Inf
-    best_model=None
-
-    for epoch in range(1, max_train_epochs+1):
-        train_loss = single_epoch_train(model, data_loaders['train'], criterion, optimizer, device,args=args)
-        print('Train Loss: {:.3f}'.format(train_loss))
-
-        eval_loss, _ = \
-        evaluate_on_dataset(model, data_loaders['val'], criterion, device, detailed=False,args=args)
-        print('Eval Loss: {:.3f}'.format(eval_loss))
-
-        if eval_loss < min_eval_loss:
-            min_eval_loss = eval_loss
-            no_improvement = 0
-            print('Epoch {}. Validation loss improved!'.format(epoch))
-            torch_save_model(model, checkpoint_file)
-                
-            test_loss, test_confidence = \
-            evaluate_on_dataset(model, data_loaders['test'], criterion, device, detailed=True,args=args)
-            print('Test Loss: {:.3f}'.format(test_loss))                
-
-            dataset = data_loaders['test'].dataset        
-            arg_max_acc = evaluate_argmax_prediction(dataset, test_confidence)
-            print('Test arg_max_acc: {:.3f}'.format(arg_max_acc))
-            best_model = model
-        else:
-            no_improvement += 1
-            print('Test Loss: {:.3f}'.format(test_loss))  
-        
-        if no_improvement >=5 :
-            print('Breaking at epoch {}. Since for 5 epoch we observed no (validation) improvement.'.format(epoch))
-            break
-    return model
 
 def test_and_plot(model,args,data_loaders,criterion,device):
     model = torch_load_model(args.checkpoint_file)    
@@ -154,25 +115,17 @@ def test_and_plot(model,args,data_loaders,criterion,device):
 
         print('Test images with dominant majority', dominant_max.mean())
         print('Guess-correctly', (gt_max == max_pred).mean(), '\n')
+    #全部 
+    print('图片共：', len(labels))
+    print('Guess-correctly：', (np.argmax(labels, 1) == np.argmax(test_confidence, 1)).mean(), '\n')
+    dataset = data_loaders['test'].dataset        
+    arg_max_acc = evaluate_argmax_prediction(dataset, test_confidence)
+    print('Test arg_max_acc: {:.3f}'.format(arg_max_acc))
 
-    '''
-        plot(plot_confusion_matrix(ground_truth=gt_max, predictions=max_pred, labels=ARTEMIS_EMOTIONS))
-        fig = px.line(df, x="year", y="lifeExp", color='country')
-
-    # html file
-    #plotly.offline.plot(fig, filename='./lifeExp.html')
-    fig.write_image("./lifeExp.png")
-    print("done")
-
-
-        # For the curious one. Images where people "together" aggree on anger are rare. Why?
-        plot(plot_confusion_matrix(ground_truth=gt_max, predictions=max_pred, labels=ARTEMIS_EMOTIONS, normalize=False))
-
-    '''
 def get_args():
     parser = argparse.ArgumentParser(description='testing-image2emoclf')
     # config
-    parser.add_argument('--cfg', type=str, default='F:/work/Image_emotion_analysis/artemis-master/Image_affective_recognition_Demo/config/image2emotion_local.yml',
+    parser.add_argument('--cfg', type=str, default='F:/work/Image_emotion_analysis/artemis-master/Image_affective_recognition_Demo/config/image2emotion_local_evaluation.yml',
                     help='configuration; similar to what is used in detectron')
     parser.add_argument(
         '--set_cfgs', dest='set_cfgs',
@@ -230,7 +183,5 @@ if __name__=='__main__':
     optimizer = torch.optim.Adam([{'params': filter(lambda p: p.requires_grad, model.parameters()), 'lr': 5e-4}])
     
     print('Starting Training……')
-    model = train(model, data_loaders, criterion, optimizer, device,args)
-
-    #test_and_plot(model,args,data_loaders,criterion,device)
+    test_and_plot(model,args,data_loaders,criterion,device)
     print('done')
