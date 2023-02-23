@@ -1,0 +1,12 @@
+df_data_dir : 'F:/work/Image_emotion_analysis/artemis-master/Image_affective_recognition_Demo/resource/output/emotion_per_image.npz'
+img_dir :  'F:/dataset/Image/ArtEmis/wikiart'
+
+lanczos :  True
+img_dim :  256
+n_emotions: 9
+num_workers :  8
+batch_size :  128
+gpu_id :  0
+use_abstract: False
+checkpoint_file: 'F:/work/Image_emotion_analysis/artemis-master/Image_affective_recognition_Demo/resource/output/image_emotion_no/best_model.pt'
+save_dir :  'F:/work/Image_emotion_analysis/artemis-master/Image_affective_recognition_Demo/resource/output/image_emotion_no' 
