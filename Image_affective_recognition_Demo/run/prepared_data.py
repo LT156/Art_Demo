@@ -9,6 +9,12 @@ from ast import literal_eval
 from torch import nn as nn
 from Image_affective_recognition_Demo.code.artemis_model.in_out.basics import create_dir
 
+def normalization(x):
+    if sum(x)!=0:
+        return (np.array(x) / float(sum(x)))
+    else:
+        return x
+                   
 
 def get_preparedData(image_hists,artemis_data,feature_df):
    
@@ -25,7 +31,7 @@ def get_preparedData(image_hists,artemis_data,feature_df):
     artemis_data = artemis_data.merge(image_hists)
     artemis_data = artemis_data.rename(columns={'emotion_histogram': 'emotion_distribution'})
     artemis_data = pd.merge(artemis_data,feature_df,on='painting',how='inner')
-    
+    artemis_data.abstract_features = artemis_data.abstract_features.apply(lambda x: (normalization(x)).astype('float32'))
     n_emotions = len(image_hists.emotion_histogram[0])
     print('Using {} emotion-classes.'.format(n_emotions))
     assert all(image_hists.emotion_histogram.apply(len) == n_emotions)
