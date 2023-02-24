@@ -1,0 +1,12 @@
+
+df_data_dir : 'F:/work/Image_emotion_analysis/artemis-master/ImageAbstract_Demo/resource/output/emotion_per_image.npz'
+img_dir :  'F:/dataset/Image/ArtEmis/wikiart'
+img2word_clf: 'F:/work/Image_emotion_analysis/artemis-master/Abstract_predict_Demo/resource/output/word_pred_model/best_model.pt'
+lanczos :  True
+img_dim :  256
+n_emotions: 9
+num_workers :  8
+batch_size :  128
+gpu_id :  0
+use_abstract: True
+checkpoint_file: 'F:/work/Image_emotion_analysis/artemis-master/ImageAbstract_Demo/resource/output/imageAbstract2emotion/best_model.pt'

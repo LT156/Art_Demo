@@ -1,0 +1,5 @@
+
+artemis_preprocessed_dir : 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step1/artemis_preprocessed.csv'
+image_hists_file :  'F:/work/Image_emotion_analysis/artemis-master/artemis/data/image-emotion-histogram.csv'
+abstract_feature_file: 'F:/work/style_emotion/words/source/new_output/words_feature2.npz'
+save_dir :  'F:/work/Image_emotion_analysis/artemis-master/ImageAbstract_Demo/resource/output/emotion_per_image' 
