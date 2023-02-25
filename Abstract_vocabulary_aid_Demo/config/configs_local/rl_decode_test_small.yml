@@ -1,0 +1,15 @@
+#resources
+img_dir : 'F:/dataset/Image/ArtEmis/wikiart'
+out_file : 'F:/work/Image_emotion_analysis/artemis-master/small_out/step3/02-21-2023-21-50-28'
+img2emo_checkpoint : 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/model/img_to_emotion/best_model.pt'
+
+#train settings
+speaker_saved_args: 'F:/work/Image_emotion_analysis/artemis-master/small_out/step2/02-21-2023-21-50-28/config.json.txt'
+speaker_checkpoint : 'F:/work/Image_emotion_analysis/artemis-master/small_out/step2/02-21-2023-21-50-28/checkpoints/best_model_xe.pt'
+sampling_config_file: 'F:/work/Image_emotion_analysis/artemis-master/artemis/data/speaker_sampling_configs/selected_hyper_params.json.txt'
+
+num_classes: 9
+num_maps: 4
+feature_extract: False
+emotion_histogram: 'F:/work/Image_emotion_analysis/artemis-master/artemis/data/image-emotion-histogram.csv'
+mode: 'original_model'

@@ -1,0 +1,15 @@
+#resources
+vocab_path: '/media/data/LuoTing/local/work_space/out/step_1/All_dataset/vocabulary.pkl'
+vocab_path_14469: '/media/data/LuoTing/local/work_space/out/step_1/All_dataset/vocabulary.pkl'
+
+#compute ciderD ti-idf
+cached_tokens: '/media/data/LuoTing/local/work_space/out/step_1/All_dataset/artemis-idxs.p'
+#compute Emo_Acc
+text2emo_path: '/media/data/LuoTing/local/work_space/neural_nets/txt_to_emotion/lstm_based/best_model.pt'
+
+#gt and gen
+references_pkl_file: '/media/data/LuoTing/local/work_space/out/step_1/All_dataset/artemis_gt_references_grouped.pkl'
+captions_pkl_file: '/media/data/LuoTing/local/work_space/out/step_3/11-28-2022-19-39-51/xe_/result_1.pkl'
+
+#out file
+save_file: '/media/data/LuoTing/local/work_space/out/step_4/11-28-2022-19-39-51/xe_'

@@ -1,0 +1,27 @@
+use_emo_grounding: False
+use_scst_training: False
+
+#data
+log_dir: '/media/data/LuoTing/local/work_space/out/step_2'
+data_dir: '/media/data/LuoTing/local/work_space/out/step_1/OLA_dataset'
+img_dir: '/media/data/databases/artemis/wikiart'
+
+#reward
+#lcs奖励最长公共子序列和关键词['ciderD','lcs','keywords_fix']
+eval_metrics: ['cider','lcs']
+cached_tokens: '/media/data/LuoTing/local/work_space/out/step_1/Part_dataset/artemis-idxs.p'
+
+#rl params
+beam_size: 5
+sampling_config_file: '/media/data/LuoTing/local/work_space/artemis-master/artemis/data/speaker_sampling_configs/selected_hyper_params.json.txt'
+
+#rl training
+gt_json: '/media/data/LuoTing/local/work_space/out/step_1/Part_dataset/artemis_emogt_encoded_enhance.json'
+references_pkl_file: '/media/data/LuoTing/local/work_space/out/step_1/Part_dataset/artemis_gt_references_grouped.pkl'
+sprcial_word: '/media/data/LuoTing/local/work_space/out/step_1/Part_dataset/special_words.json'
+
+img2emo_checkpoint: '/media/data/LuoTing/local/work_space/neural_nets/img_to_emotion/best_model.pt'
+text2emo_path: '/media/data/LuoTing/local/work_space/neural_nets/txt_to_emotion/lstm_based/best_model.pt'
+model_ckp: '/media/data/LuoTing/local/work_space/out/step_2/10-13-2022-11-23-37/checkpoints/best_model_xe.pt'
+
+file_name: "ola_preprocessed.csv"

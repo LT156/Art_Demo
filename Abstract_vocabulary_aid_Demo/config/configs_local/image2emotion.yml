@@ -1,0 +1,13 @@
+artemis_preprocessed_dir :  '/media/data/LuoTing/local/work_space/out/step_1/All_dataset/artemis_preprocessed.csv'
+save_dir :  '/media/data/LuoTing/local/work_space/out/image2emoclf'  # for trained model
+# Load saved histograms of emotion choices as computed with "previous" notebook (see top-README if you are lost)
+image_hists_file :  '/media/data/LuoTing/local/work_space/artemis-master/artemis/data/image-emotion-histogram.csv'
+checkpoint_file: '/media/data/LuoTing/local/work_space/out/image2emoclf/best_model.pt'
+# deep-net data-handling params. note if you want to reuse this net with neural-speaker 
+# it makes sense to keep some of the (image-oriented) parameters the same accross the nets.
+lanczos :  True
+img_dim :  256
+num_workers :  8
+batch_size :  128
+gpu_id :  0
+img_dir :  /media/data/databases/artemis/wikiart

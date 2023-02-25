@@ -1,0 +1,13 @@
+artemis_preprocessed_dir : 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step1/artemis_preprocessed.csv'
+save_dir :  'F:/work/Image_emotion_analysis/artemis-master/RAIVS_out/step0/image_emotion'  # for trained model
+# Load saved histograms of emotion choices as computed with "previous" notebook (see top-README if you are lost)
+image_hists_file :  'F:/work/Image_emotion_analysis/artemis-master/artemis/data/image-emotion-histogram.csv'
+checkpoint_file: 'F:/work/Image_emotion_analysis/artemis-master/RAIVS_out/step0/image_emotion/best_model.pt'
+# deep-net data-handling params. note if you want to reuse this net with neural-speaker 
+# it makes sense to keep some of the (image-oriented) parameters the same accross the nets.
+lanczos :  True
+img_dim :  256
+num_workers :  8
+batch_size :  128
+gpu_id :  0
+img_dir :  'F:/dataset/Image/ArtEmis/wikiart'

@@ -1,0 +1,15 @@
+#resources
+img_dir : '/media/data/databases/artemis/wikiart'
+out_file : '/media/data/LuoTing/local/work_space/out_small/step_3/12-05-2022-15-34-47'
+img2emo_checkpoint : '/media/data/LuoTing/local/work_space/neural_nets/img_to_emotion/best_model.pt'
+
+#train settings
+speaker_saved_args: '/media/data/LuoTing/local/work_space/out_small/step_2/12-05-2022-15-34-47/config.json.txt'
+speaker_checkpoint : '/media/data/LuoTing/local/work_space/out_small/step_2/12-05-2022-15-34-47/checkpoints/best_model_xe.pt'
+sampling_config_file : '/media/data/LuoTing/local/work_space/artemis-master/artemis/data/speaker_sampling_configs/selected_hyper_params.json.txt'
+
+num_classes: 9
+num_maps: 4
+feature_extract: False
+emotion_histogram: /media/data/LuoTing/local/work_space/artemis-master/artemis/data/image-emotion-histogram.csv
+mode: EMOdetected_model

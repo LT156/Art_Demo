@@ -1,0 +1,15 @@
+#resources
+vocab_path: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step1/vocabulary.pkl'
+vocab_path_14469: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step1/vocabulary.pkl'
+
+#compute ciderD ti-idf
+cached_tokens: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step1/artemis-idxs.p'
+#compute Emo_Acc
+text2emo_path: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/model/txt_to_emotion/lstm_based/best_model.pt'
+
+#gt and gen
+references_pkl_file: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step1/artemis_gt_references_grouped.pkl'
+captions_pkl_file: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step3/RAIVS_12-21-2022-02-22-21/result_1.pkl'
+
+#out file
+save_file: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step4/RAIVS_12-21-2022-02-22-21'

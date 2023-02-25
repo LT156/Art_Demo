@@ -1,0 +1,38 @@
+use_emo_grounding: True
+use_scst_training: False
+use_abstract_data: True
+save_each_epoch: False
+
+#data
+log_dir: 'F:/work/Image_emotion_analysis/artemis-master/small_out/step2'
+data_dir: 'F:/work/Image_emotion_analysis/artemis-master/small_out/step1'
+data_dir2: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step1'
+img_dir: 'F:/dataset/Image/ArtEmis/wikiart'
+file_name: 'artemis_preprocessed.csv'
+
+#reward
+#lcs['ciderD','lcs','keywords_fix']'ciderD',
+eval_metrics: ['ciderD','emo_alignment']
+cached_tokens: 'F:/work/Image_emotion_analysis/artemis-master/small_out/step1/artemis-idxs.p'
+
+#rl params
+beam_size: 5
+batch_size: 64
+sampling_config_file: 'F:/work/Image_emotion_analysis/artemis-master/artemis/data/speaker_sampling_configs/selected_hyper_params.json.txt'
+
+#rl training
+gt_json: 'F:/work/Image_emotion_analysis/artemis-master/small_out/step0/artemis_gt_references_grouped.json'
+references_pkl_file: 'F:/work/Image_emotion_analysis/artemis-master/small_out/step0/artemis_gt_references_grouped.pkl'
+sprcial_word: 'F:/work/Image_emotion_analysis/artemis-master/small_out/step1/special_words.json'
+
+img2emo_checkpoint: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/model/img_to_emotion/best_model.pt'
+text2emo_path: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/model/txt_to_emotion/lstm_based/best_model.pt'
+model_ckp: 'F:/work/Image_emotion_analysis/artemis-master/small_out/step2/12-20-2022-23-09-49/checkpoints/best_model_xe.pt'
+
+
+num_classes: 9
+num_maps: 4
+feature_extract: False
+emotion_histogram: 'F:/work/Image_emotion_analysis/artemis-master/artemis/data/image-emotion-histogram.csv'
+mode: 'original_model'
+# EMOdetected_model

@@ -1,0 +1,33 @@
+use_emo_grounding: True
+use_scst_training: False
+
+#data
+log_dir: 'F:/work/Image_emotion_analysis/artemis-master/RAIVS_out/step_2'
+data_dir: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step1'
+img_dir: 'F:/dataset/Image/ArtEmis/wikiart'
+file_name: 'artemis_preprocessed_enhance.csv'
+
+#reward,cider,ciderD,spice,meteor,rouge,bleu,emo_alignment,lcs
+eval_metrics: ['ciderD']
+cached_tokens: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step1/artemis-idxs.p'
+
+#rl params
+beam_size: 5
+sampling_config_file: 'F:/work/Image_emotion_analysis/artemis-master/artemis/data/speaker_sampling_configs/selected_hyper_params.json.txt'
+
+#rl training
+gt_json: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step1/artemis_emogt_encoded_enhance.json'
+references_pkl_file: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step1/artemis_gt_references_grouped.pkl'
+sprcial_word: 'F:/work/Image_emotion_analysis/artemis-master/artemis_out/step1/special_words.json'
+
+img2emo_checkpoint: '/media/data/LuoTing/local/work_space/neural_nets/img_to_emotion/best_model.pt'
+text2emo_path: '/media/data/LuoTing/local/work_space/neural_nets/txt_to_emotion/lstm_based/best_model.pt'
+model_ckp: ' '
+
+num_classes: 9
+num_maps: 4
+feature_extract: False
+emotion_histogram: F:/work/Image_emotion_analysis/artemis-master/artemis/data/image-emotion-histogram.csv
+mode: original_model
+
+num_workers: 20
