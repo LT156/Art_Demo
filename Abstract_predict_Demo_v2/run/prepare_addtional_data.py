@@ -54,23 +54,21 @@ if __name__=='__main__':
     loaded = np.load(args.text_file,allow_pickle=True)
     df= pd.DataFrame(loaded['df'],columns=loaded['columns'])[:5000]
     vocab = Vocabulary.load(args.vocab_file)
-    abs_feat_list = []
-    for  text in df['tokens_lem_encoded']:
-        abs_feat = np.zeros([len(vocab)])
-        for w_id in text:
-            if w_id<1000 and w_id>=0:
-                abs_feat[w_id] += 1
-        abs_feat = (abs_feat>0).astype(np.float32) 
-        abs_feat_list.append(abs_feat)
-    
-    df['abs_features'] = abs_feat_list
+   
     
     painting = []
     abs_feature = []
     split = []
     for key,g in df.groupby('painting'):
         painting.append(key)
-        abs_feature.append(np.sum(np.stack(g['abs_features']),axis=0)[None,:])
+    
+        abs_feat = np.zeros([len(vocab)])
+        for  text in g['tokens_lem_encoded']:
+            for w_id in text:
+                if w_id<1000 and w_id>=0:
+                    abs_feat[w_id] += 1
+        abs_feat = (abs_feat>0).astype(np.float32) 
+        abs_feature.append(abs_feat)
         split.append(g['split'].iloc[0])
     abs_feat_df = pd.DataFrame({'painting':painting,'abs_feature':abs_feature,'split':split})
     
