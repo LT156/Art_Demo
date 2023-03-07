@@ -1,0 +1,20 @@
+vocab_path: "F:/work/Image_emotion_analysis/artemis-master/Abstract_vocabulary_aid_Demo/resource/output/vocabulary.pkl"
+input_encoding_size: 1000
+att_hid_size: 512
+n_emotions: 9
+
+checkpoint_file: "F:/work/Image_emotion_analysis/artemis-master/Abstract_predict_Demo_v3/resource/output/word_pred_model"
+additional_data_file: "F:/work/Image_emotion_analysis/artemis-master/Abstract_predict_Demo_v2/resource/output/additional_feat.npz"
+
+batch_size: 16
+max_train_epochs: 50
+
+img_dim: 256
+lanczos: True
+num_workers: 0
+img_dir: 'F:/dataset/Image/ArtEmis/wikiart'
+obj_dir: 'F:/dataset/Image/ArtEmis/wikiart_bottom_up'
+gpu_id: 0
+fc_feat_size: 2048
+drop: 2
+selected_num: 15
